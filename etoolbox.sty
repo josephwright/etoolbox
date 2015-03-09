@@ -26,7 +26,12 @@
   {}
 \endgroup
 
-\RequirePackage{etex}
+\ifdefined\extrafloats
+  \expandafter\@gobble
+\else
+  \expandafter\@firstofone
+\fi
+  {\RequirePackage{etex}}
 
 \def\etb@catcodes{\do\&\do\|\do\:\do\-\do\=\do\<\do\>}
 \def\do#1{\catcode\number`#1=\the\catcode`#1\relax}
