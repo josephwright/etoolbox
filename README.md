@@ -40,15 +40,15 @@ MiKTeX:   The `etoolbox` package is included in MiKTeX.
 2. Unpack the archive in the root directory of the local TeX
    installation tree, for example
 
-    /usr/local/share/texmf/
+        /usr/local/share/texmf/
     
    or
 
-    /usr/share/texmf-local/
+        /usr/share/texmf-local/
 
    or
 
-    C:\Local TeX Files\
+        C:\Local TeX Files\
 
 3. Update the file hash tables (also known as the file name
    database).
@@ -67,19 +67,19 @@ MiKTeX:   The `etoolbox` package is included in MiKTeX.
    where `<TEXMFLOCAL>` denotes the root of the local TeX installation
    tree, for example
 
-    /usr/local/share/texmf/
+        /usr/local/share/texmf/
 
    or
 
-    /usr/share/texmf-local/
+        /usr/share/texmf-local/
 
    or
 
-    C:\Local TeX Files\
+        C:\Local TeX Files\
 
 2. The file `etoolbox.pdf` goes to
 
-    <TEXMFLOCAL>/doc/latex/etoolbox/
+        <TEXMFLOCAL>/doc/latex/etoolbox/
 
 3. Update the file hash tables (also known as the file name
    database).
