@@ -10,13 +10,13 @@ previous versions of this package were released under the name
 
 #License
 
-Copyright (c) 2007-2010 Philipp Lehman. This package is author-
-maintained. Permission is granted to copy, distribute and/or modify
-this software under the terms of the LaTeX Project Public License
-(LPPL), version 1.3. This software is provided 'as is', without
-warranty of any kind, either expressed or implied, including, but
-not limited to, the implied warranties of merchantability and
-fitness for a particular purpose.
+Copyright (c) 2007-2010 Philipp Lehman, 2015 Joseph Wright.
+Permission is granted to copy, distribute and/or modify this
+software under the terms of the LaTeX Project Public License (LPPL),
+version 1.3c or any later version. This software is provided 'as
+is', without warranty of any kind, either expressed or implied,
+including, but not limited to, the implied warranties of
+merchantability and fitness for a particular purpose.
 
 #Requirements
 
