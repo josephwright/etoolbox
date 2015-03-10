@@ -1,4 +1,6 @@
-# About
+# `etoolbox`: e-TeX tools for LaTeX
+
+## About
 
 The `etoolbox` package is a toolbox of programming facilities geared
 primarily towards LaTeX class and package authors. It provides LaTeX
@@ -8,7 +10,7 @@ profile of this package. The package is work in progress. Note that
 previous versions of this package were released under the name
 `elatex`.
 
-#License
+## License
 
 Copyright (c) 2007-2010 Philipp Lehman, 2015 Joseph Wright.
 Permission is granted to copy, distribute and/or modify this
@@ -18,12 +20,12 @@ is', without warranty of any kind, either expressed or implied,
 including, but not limited to, the implied warranties of
 merchantability and fitness for a particular purpose.
 
-#Requirements
+## Requirements
 
  - e-TeX
  - etex.sty
 
-#Automatic installation
+## Automatic installation
 
 TeX Live: The `etoolbox` package is included in TeX Live.
           Use the TeX Live package manager to install it.
@@ -58,7 +60,7 @@ MiKTeX:   The `etoolbox` package is included in MiKTeX.
    window or use the 'Refresh FNDB' button of the MiKTeX Options
    window.
 
-#Manual installation
+## Manual installation
 
 1. Copy the files `etoolbox.sty` and `etoolbox.def` to
 
