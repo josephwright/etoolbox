@@ -23,7 +23,7 @@ merchantability and fitness for a particular purpose.
 ## Requirements
 
  - e-TeX
- - `etex.sty`
+ - `etex.sty` (for LaTeX kernel releases prior to 2015)
 
 ## Automatic installation
 
