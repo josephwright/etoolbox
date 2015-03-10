@@ -1,8 +1,5 @@
-% $Id: etoolbox.def,v 2.1 2011/01/03 19:14:10 lehman stable $
-
 \ProvidesFile{etoolbox.def}
-[\csname etb@rcsid\endcsname $Id: etoolbox.def,v 2.1 2011/01/03 19:14:10 lehman stable $
- etoolbox debug messages]
+  [2015/03/10 v2.1a etoolbox debug messages (JAW)]
 
 \begingroup
 \makeatletter
