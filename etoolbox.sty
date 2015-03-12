@@ -1159,7 +1159,7 @@
     \edef\noexpand\etb@resrvda{\noexpand\etb@resrvda\meaning#1&}}%
   \etb@resrvda
   \makeatletter
-  \scantokens\expandafter{\etb@resrvda}%
+  \scantokens\expandafter{\etb@resrvda\ignorespaces}%
   \expandafter\endgroup\ifx#1\etb@resrvda
     \expandafter\@firstoftwo
   \else
@@ -1175,7 +1175,7 @@
       \endgroup\noexpand\noexpand\noexpand\ifblank{####2}}%
     \edef\noexpand\etb@resrvda{\noexpand\etb@resrvda
       \expandafter\strip@prefix\meaning#1\detokenize{#2}&}%
-    \noexpand\etb@resrvda}
+    \noexpand\etb@resrvda}%
   \etb@resrvda\@secondoftwo\@firstoftwo}
 
 % {<string>}{<true}{<false>}
@@ -1214,7 +1214,7 @@
                 {The command is special and cannot be
                  handled by \string\robustify.}%
               \@tempswafalse}}
-          {\protected\edef#1{\expandonce\etb@resrvda}}
+          {\protected\edef#1{\expandonce\etb@resrvda}}%
         \if@tempswa
           \ifcsdef{\string#1 }
             {}
@@ -1305,12 +1305,12 @@
      \etb@patchcmd@scantoks\etb@resrvda
      \let#2\etb@resrvda
      \undef\etb@resrvda
-     \@firstoftwo}
+     \@firstoftwo}%
     {\@secondoftwo}}
 
 \def\etb@patchcmd@scantoks#1{%
   \edef\etb@resrvda{\endgroup
-    \unexpanded{\makeatletter\scantokens}{#1}%
+    \unexpanded{\makeatletter\scantokens}{#1\ignorespaces}%
     \catcode\number`\@=\the\catcode`\@\relax}%
   \etb@resrvda}
 
