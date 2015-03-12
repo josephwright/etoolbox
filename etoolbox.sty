@@ -1159,7 +1159,8 @@
     \edef\noexpand\etb@resrvda{\noexpand\etb@resrvda\meaning#1&}}%
   \etb@resrvda
   \makeatletter
-  \scantokens\expandafter{\etb@resrvda\ignorespaces}%
+  \endlinechar\m@ne
+  \scantokens\expandafter{\etb@resrvda}%
   \expandafter\endgroup\ifx#1\etb@resrvda
     \expandafter\@firstoftwo
   \else
@@ -1310,7 +1311,9 @@
 
 \def\etb@patchcmd@scantoks#1{%
   \edef\etb@resrvda{\endgroup
-    \unexpanded{\makeatletter\scantokens}{#1\ignorespaces}%
+    \endlinechar\m@ne
+    \unexpanded{\makeatletter\scantokens}{#1}%
+    \endlinechar\the\endlinechar\relax
     \catcode\number`\@=\the\catcode`\@\relax}%
   \etb@resrvda}
 
