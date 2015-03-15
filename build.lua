@@ -21,7 +21,7 @@ unpackfiles = {""}
 packtdszip  = true
 
 -- No tests for this bundle
-testfildir = ""
+testfiledir = ""
 
 -- Find and run the build system
 kpse.set_program_name ("kpsewhich")
