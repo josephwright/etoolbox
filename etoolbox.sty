@@ -1646,11 +1646,12 @@
    \@afterenddocumenthook
    \deadcycles}
   {}
-  {\let\etb@@end\@@end
-   \def\@@end{%
-     \let\AfterEndDocument\@firstofone
-     \@afterenddocumenthook
-     \etb@@end}}
+  {\AtEndDocument{%
+     \let\etb@@end\@@end
+     \def\@@end{%
+       \let\AfterEndDocument\@firstofone
+       \@afterenddocumenthook
+       \etb@@end}}}
 
 % {<environment>}{<code>}
 
