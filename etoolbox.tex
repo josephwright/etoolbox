@@ -243,6 +243,10 @@ Clears a \prm{command} such that \etex's \cmd{ifdefined} and \cmd{ifcsname} test
 
 Similar to \cmd{undef} except that it takes a control sequence name as its argument. This command is robust and may be prefixed with \cs{global}.
 
+\cmditem{csmeaning}{csname}
+
+Similar to the \tex primitive \cmd{meaning} but takes a control sequence name as its argument. If the control sequence is undefined, this command will not implicitly assign a meaning of \cmd{relax} to it.
+
 \cmditem{csshow}{csname}
 
 Similar to the \tex primitive \cmd{show} but takes a control sequence name as its argument. If the control sequence is undefined, this command will not implicitly assign a meaning of \cmd{relax} to it. This command is robust.
@@ -1264,6 +1268,10 @@ Expands to \prm{true} if \prm{string} is a Roman numeral, and to \prm{false} oth
 This revision history is a list of changes relevant to users of this package. Changes of a more technical nature which do not affect the user interface or the behavior of the package are not included in the list. If an entry in the revision history states that a feature has been \emph{improved} or \emph{extended}, this indicates a syntactically backwards compatible modification, such as the addition of an optional argument to an existing command. Entries stating that a feature has been \emph{modified} demand attention. They indicate a modification which may require changes to existing documents in some, hopefully rare, cases. The numbers on the right indicate the relevant section of this manual.
 
 \begin{changelog}
+
+\begin{release}{2.2}{2015-05-04}
+\item Added \cmd{csmeaning}\see{aut:def:def}
+\end{release}
 
 \begin{release}{2.1d}{2015-03-19}
 \item Fixed issue with \sty{bm} and some classes

@@ -106,6 +106,15 @@
   \begingroup\expandafter\endgroup
   \expandafter\show\csname#1\endcsname}
 
+% {<csname>}
+
+\newcommand*{\csmeaning}[1]{%
+  \ifcsname #1\endcsname
+    \expandafter\meaning\csname #1\endcsname
+  \else
+    \detokenize{undefined}%
+  \fi}
+
 % {<cstoken>}{<true>}{<false>}
 
 \newcommand{\ifdef}[1]{%
