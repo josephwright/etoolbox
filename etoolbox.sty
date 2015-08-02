@@ -476,12 +476,19 @@
 
 % {<string>}{<true>}{<false>}
 
-\newcommand{\ifblank}[1]{% from url.sty
-  \etb@ifblank@i#1&&\@secondoftwo\@firstoftwo:}
-\long\def\etb@ifblank@i#1#2&#3#4#5:{#4}
+\newcommand{\ifblank}[1]{% from expl3
+  \expandafter\ifx\expandafter\relax\detokenize\expandafter{\@gobble#1?}\relax
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
 
 \newcommand{\notblank}[1]{%
-  \etb@ifblank@i#1&&\@firstoftwo\@secondoftwo:}
+  \expandafter\ifx\expandafter\relax\detokenize\expandafter{\@gobble#1?}\relax
+    \expandafter\@secondoftwo
+  \else
+    \expandafter\@firstoftwo
+  \fi}
 
 % {<numexpr>}{<comp>}{<numexpr>}{<true>}{<false>}
 
