@@ -1240,9 +1240,7 @@
               \@tempswafalse}}
           {\protected\edef#1{\expandonce\etb@resrvda}}%
         \if@tempswa
-          \ifcsdef{\string#1 }
-            {}
-            {\csundef{\expandafter\@gobble\string#1 }}%
+          \csundef{\expandafter\@gobble\string#1 }%
         \fi
         \undef\etb@resrvda}
        {\etb@error{\string#1 not a macro}\@eha}}}
