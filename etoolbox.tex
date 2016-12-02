@@ -1183,6 +1183,22 @@ Similar to \cmd{listeadd} except that it takes a control sequence name as its fi
 
 Similar to \cmd{listcseadd} except that the assignment is global.
 
+\cmditem{listdel}{listmacro}{item}
+
+This command removes an \prm{item} from a \prm{listmacro}. A blank \prm{item} is ignored.
+
+\cmditem{listgdel}{listmacro}{item}
+
+Similar to \cmd{listdel} except that the assignment is global.
+
+\cmditem{listcsdel}{listcsname}{item}
+
+Similar to \cmd{listdel} except that it takes a control sequence name as its first argument.
+
+\cmditem{listcsgdel}{listcsname}{item}
+
+Similar to \cmd{listcsdel} except that the assignment is global.
+
 \cmditem{dolistloop}{listmacro}
 
 This command loops over all items in a \prm{listmacro} and executes the auxiliary command \cmd{do} for every item in the list, passing the item as an argument. The list loop itself is expandable. You may use \cmd{listbreak} at the end of the replacement text of \cmd{do} to stop processing and discard the remaining items in the list. Here is a usage example which prints an internal list called \cmd{mylist} as an \env{itemize} environment:
@@ -1272,6 +1288,11 @@ The development code for \sty{etoolbox} is hosted on GitHub: \url{https://github
 This revision history is a list of changes relevant to users of this package. Changes of a more technical nature which do not affect the user interface or the behavior of the package are not included in the list. If an entry in the revision history states that a feature has been \emph{improved} or \emph{extended}, this indicates a syntactically backwards compatible modification, such as the addition of an optional argument to an existing command. Entries stating that a feature has been \emph{modified} demand attention. They indicate a modification which may require changes to existing documents in some, hopefully rare, cases. The numbers on the right indicate the relevant section of this manual.
 
 \begin{changelog}
+
+\begin{release}{2.3}{2016-12-31}
+\item Added \cmd{listdel}\see{aut:lst:int}
+\item Added \cmd{listgdel}\see{aut:lst:int}
+\end{release}
 
 \begin{release}{2.2b}{2016-12-01}
 \item Fixed \cmd{ifdefltxprotect} for some types of \latex robust commands

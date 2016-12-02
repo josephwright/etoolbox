@@ -1570,6 +1570,30 @@
 \newrobustcmd{\listcsxadd}[1]{%
   \expandafter\listxadd\csname#1\endcsname}
 
+% {<listmacro>}{<string>}
+
+\newrobustcmd{\listdel}[2]{%
+  \etb@listdel{#1}{#2}\def}
+\newrobustcmd{\listgdel}[2]{%
+  \etb@listdel{#1}{#2}\gdef}
+
+\protected\long\def\etb@listdel#1#2#3{%
+  \ifblank{#2}
+    {}
+    {\ifinlist{#2}{#1}{%
+     \begingroup
+     \def\etb@tempa##1|#2|##2&{\endgroup
+       \expandafter#3\expandafter#1\expandafter{\@gobble##1|##2}}%
+    \expandafter\etb@tempa\expandafter|#1&}{}}%
+}
+
+% {<listcsname>}{<string>}
+
+\newrobustcmd{\listcsdel}[1]{%
+  \expandafter\listdel\csname#1\endcsname}
+\newrobustcmd{\listcsgdel}[1]{%
+  \expandafter\listgdel\csname#1\endcsname}
+
 % {<string>}{<listmacro>}{<true>}{<false>}
 
 \newrobustcmd{\ifinlist}[2]{%
