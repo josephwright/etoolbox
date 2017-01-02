@@ -1,5 +1,5 @@
 % Copyright (c) 2007-2011 Philipp Lehman.
-%           (c) 2015,2016 Joseph Wright
+%           (c) 2015-2017 Joseph Wright
 %
 % Permission is granted to copy, distribute and/or modify this
 % software under the terms of the LaTeX Project Public License
@@ -1572,12 +1572,12 @@
 
 % {<listmacro>}{<string>}
 
-\newrobustcmd{\listdel}[2]{%
-  \etb@listdel{#1}{#2}\def}
-\newrobustcmd{\listgdel}[2]{%
-  \etb@listdel{#1}{#2}\gdef}
+\newrobustcmd{\listremove}[2]{%
+  \etb@listremove{#1}{#2}\def}
+\newrobustcmd{\listgremove}[2]{%
+  \etb@listremove{#1}{#2}\gdef}
 
-\protected\long\def\etb@listdel#1#2#3{%
+\protected\long\def\etb@listremove#1#2#3{%
   \ifblank{#2}
     {}
     {\ifinlist{#2}{#1}{%
@@ -1589,10 +1589,10 @@
 
 % {<listcsname>}{<string>}
 
-\newrobustcmd{\listcsdel}[1]{%
-  \expandafter\listdel\csname#1\endcsname}
-\newrobustcmd{\listcsgdel}[1]{%
-  \expandafter\listgdel\csname#1\endcsname}
+\newrobustcmd{\listcsremove}[1]{%
+  \expandafter\listremove\csname#1\endcsname}
+\newrobustcmd{\listcsgremove}[1]{%
+  \expandafter\listgremove\csname#1\endcsname}
 
 % {<string>}{<listmacro>}{<true>}{<false>}
 
