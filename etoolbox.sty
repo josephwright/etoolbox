@@ -892,6 +892,7 @@
 % {<csname>}
 
 \newrobustcmd*{\csundef}[1]{\cslet{#1}\etb@undefined}
+\newrobustcmd*{\csgundef}[1]{\global\cslet{#1}\etb@undefined}
 
 % {<cstoken>}{<code>}
 

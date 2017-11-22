@@ -239,9 +239,17 @@ Takes a control sequence name as its argument and forms a control sequence token
 
 Clears a \prm{command} such that \etex's \cmd{ifdefined} and \cmd{ifcsname} tests will consider it as undefined. This command is robust and may be prefixed with \cs{global}.
 
+\cmditem{undef}<command>
+
+Similar to \cmd{undef} but acts globally.
+
 \cmditem{csundef}{csname}
 
 Similar to \cmd{undef} except that it takes a control sequence name as its argument. This command is robust and may be prefixed with \cs{global}.
+
+\cmditem{csgundef}{csname}
+
+Similar to \cmd{csundef} but acts globally.
 
 \cmditem{csmeaning}{csname}
 
@@ -1288,6 +1296,11 @@ The development code for \sty{etoolbox} is hosted on GitHub: \url{https://github
 This revision history is a list of changes relevant to users of this package. Changes of a more technical nature which do not affect the user interface or the behavior of the package are not included in the list. If an entry in the revision history states that a feature has been \emph{improved} or \emph{extended}, this indicates a syntactically backwards compatible modification, such as the addition of an optional argument to an existing command. Entries stating that a feature has been \emph{modified} demand attention. They indicate a modification which may require changes to existing documents in some, hopefully rare, cases. The numbers on the right indicate the relevant section of this manual.
 
 \begin{changelog}
+
+\begin{release}{2.5}{2017-11-22}
+\item Added \cmd{csgundef}\see{aut:def:def}
+\item Added \cmd{gundef}\see{aut:def:def}
+\end{release}
 
 \begin{release}{2.4}{2017-01-02}
 \item Renamed \cmd{listdel} to \cmd{listremove} (name clash)\see{aut:lst:int}
