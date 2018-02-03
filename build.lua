@@ -15,7 +15,7 @@ sourcefiles  = installfiles
 typesetfiles = {"*.tex"}
 
 -- No packed source files
-unpackfiles = {""}
+unpackfiles = {}
 
 -- Release a TDS-style zip
 packtdszip  = true
