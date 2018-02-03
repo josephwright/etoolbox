@@ -1,0 +1,20 @@
+\input regression-test
+\RequirePackage{etoolbox}
+
+\START
+
+\OMIT
+  \def\do#1{\detokenize{"#1"}}
+\TIMO
+\TESTEXP{\docsvlist}
+  {%
+    \docsvlist{a,b,c}%
+    \NEWLINE
+    \docsvlist{a,{b,c}}%
+    \NEWLINE
+    \docsvlist{a, {b,c}}%
+    \NEWLINE
+    \docsvlist{a,{b}, {c}}%
+  }
+
+\END

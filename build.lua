@@ -20,8 +20,8 @@ unpackfiles = {}
 -- Release a TDS-style zip
 packtdszip  = true
 
--- No tests for this bundle
-testfiledir = ""
+-- Only need one test run
+checkengines = {"pdftex"}
 
 -- Detail how to set the version automatically
 versionfiles = {"*.def", "*.sty", "*.tex"}
