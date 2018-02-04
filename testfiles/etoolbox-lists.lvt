@@ -15,6 +15,8 @@
     \docsvlist{a, {b,c}}%
     \NEWLINE
     \docsvlist{a,{b}, {c}}%
+    \NEWLINE
+    \docsvlist{a,{b},,{c},}%
   }
 
 \TESTEXP{\forcsvlist}
@@ -26,6 +28,8 @@
     \forcsvlist{\do}{a, {b,c}}%
     \NEWLINE
     \forcsvlist{\do}{a,{b}, {c}}%
+    \NEWLINE
+    \forcsvlist{\do}{a,{b},,{c},}%
   }
 
 \END
