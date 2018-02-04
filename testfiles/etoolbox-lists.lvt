@@ -32,4 +32,18 @@
     \forcsvlist{\do}{a,{b},,{c},}%
   }
 
+\OMIT
+  \listadd{\testlist}{a}
+  \listadd{\testlist}{{b}}
+  \listadd{\testlist}{ {c}}
+  \listadd{\testlist}{{d} }
+  \listadd{\testlist}{ {e} }
+  \listadd{\testlist}{}
+  \listadd{\testlist}{ f }
+\TIMO
+\TESTEXP{\forlistloop}
+  {%
+    \forlistloop{\do}{\testlist}%
+  }
+
 \END
