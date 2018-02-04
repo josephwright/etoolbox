@@ -1638,16 +1638,19 @@
 \newcommand*{\forlistloop}[2]{%
   \expandafter\etb@forlistloop\expandafter{#2}{#1}}
 
-\long\def\etb@forlistloop#1#2{\etb@forlistloop@i{#2}#1|&}
+\long\def\etb@forlistloop#1#2{\etb@forlistloop@i{#2}#1|\etb@lst@q@end|&}
 
-\long\def\etb@forlistloop@i#1#2|#3&{%
-  \ifblank{#2}
-    {}
-    {#1{#2}}%
-  \ifblank{#3}
+\long\def\etb@forlistloop@i#1#2|{%
+  \ifx\etb@lst@q@end#2\@empty
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
     {\listbreak}
-    {\etb@forlistloop@i{#1}#3}%
-  &}
+    {\ifblank{#2}
+      {}
+      {#1{#2}}%
+      \etb@forlistloop@i{#1}}}
 
 % {<handler>}{<listcsname>} => <handler>{<item1>}<handler>{<item2>}...
 
