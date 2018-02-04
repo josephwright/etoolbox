@@ -1502,22 +1502,15 @@
     \long\def\noexpand#1####1{%
       \expandafter\noexpand
       \csname etb@lst@\expandafter\@gobble\string#1\endcsname
-      \space####1\noexpand#2\noexpand\etb@lst@q@end\noexpand#2&}%
-    \long\csdef{etb@lst@\expandafter\@gobble\string#1}%
-      ####1\noexpand#2####2\noexpand#2{%
+      \space####1\noexpand#2&}%
+    \long\csdef{etb@lst@\expandafter\@gobble\string#1}####1\noexpand#2####2&{%
       \noexpand\etb@listitem\noexpand\do{####1}%
-      \noexpand\ifx\noexpand\etb@lst@q@end####2\noexpand\@empty
-        \noexpand\expandafter\noexpand\@firstoftwo
-      \noexpand\else
-        \noexpand\expandafter\noexpand\@secondoftwo
-      \noexpand\fi
+      \noexpand\ifblank{####2}
         {\noexpand\listbreak}
         {\expandafter\noexpand
          \csname etb@lst@\expandafter\@gobble\string#1\endcsname
-	 \space####2\noexpand#2}}}%
+	 \space####2}&}}%
   \@tempa}
-
-\def\etb@lst@q@end{\etb@lst@q@end}
 
 \def\etb@defparser@arg#1#2{%
   \begingroup
