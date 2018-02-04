@@ -1502,15 +1502,23 @@
     \long\def\noexpand#1####1{%
       \expandafter\noexpand
       \csname etb@lst@\expandafter\@gobble\string#1\endcsname
-      \space####1\noexpand#2&}%
-    \long\csdef{etb@lst@\expandafter\@gobble\string#1}####1\noexpand#2####2&{%
-      \noexpand\etb@listitem\noexpand\do{####1}%
-      \noexpand\ifblank{####2}
+      \noexpand\@nil####1\noexpand#2\noexpand\etb@lst@q@end\noexpand#2&}%
+    \long\csdef{etb@lst@\expandafter\@gobble\string#1}%
+      ####1\noexpand#2{%
+      \noexpand\expandafter\noexpand\ifx\noexpand\expandafter
+      \noexpand\etb@lst@q@end\noexpand\@gobble####1\noexpand\@empty
+        \noexpand\expandafter\noexpand\@firstoftwo
+      \noexpand\else
+        \noexpand\expandafter\noexpand\@secondoftwo
+      \noexpand\fi
         {\noexpand\listbreak}
-        {\expandafter\noexpand
+        {\noexpand\etb@listitem\noexpand\do{####1}%
+         \expandafter\noexpand
          \csname etb@lst@\expandafter\@gobble\string#1\endcsname
-	 \space####2}&}}%
+	 \noexpand\@nil}}}%
   \@tempa}
+
+\def\etb@lst@q@end{\etb@lst@q@end}
 
 \def\etb@defparser@arg#1#2{%
   \begingroup
@@ -1518,22 +1526,27 @@
     \long\def\noexpand#1####1####2{%
       \expandafter\noexpand
       \csname etb@lst@\expandafter\@gobble\string#1\endcsname
-      {####1}\space####2\noexpand#2&}%
-    \long\csdef{etb@lst@\expandafter\@gobble\string#1}####1####2\noexpand#2####3&{%
-      \noexpand\etb@listitem{####1}{####2}%
-      \noexpand\ifblank{####3}
+      {####1}\noexpand\@nil####2\noexpand#2\noexpand\etb@lst@q@end\noexpand#2&}%
+    \long\csdef{etb@lst@\expandafter\@gobble\string#1}####1####2\noexpand#2{%
+      \noexpand\expandafter\noexpand\ifx\noexpand\expandafter
+      \noexpand\etb@lst@q@end\noexpand\@gobble####2\noexpand\@empty
+        \noexpand\expandafter\noexpand\@firstoftwo
+      \noexpand\else
+        \noexpand\expandafter\noexpand\@secondoftwo
+      \noexpand\fi
         {\noexpand\listbreak}
-        {\expandafter\noexpand
+        {\noexpand\etb@listitem{####1}{####2}%
+         \expandafter\noexpand
          \csname etb@lst@\expandafter\@gobble\string#1\endcsname
-	 {####1}\space####3}&}}%
+	        {####1}\noexpand\@nil}}}%
   \@tempa}
 
 \long\def\etb@listitem#1#2{%
-  \ifblank{#2}
+  \expandafter\ifblank\expandafter{\@gobble#2}
     {}
     {\expandafter\etb@listitem@i
-     \expandafter{\@firstofone#2}{#1}}}
-\long\def\etb@listitem@i#1#2{#2{#1}}
+     \expandafter{\@gobble#2}{#1}}}
+\long\def\etb@listitem@i#1#2{\expandafter#2\expandafter{\@firstofone#1}}
 
 \newcommand*{\listbreak}{}
 \long\def\listbreak#1&{}
