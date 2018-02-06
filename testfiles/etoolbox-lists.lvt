@@ -21,15 +21,15 @@
 
 \TESTEXP{\forcsvlist}
   {%
-    \forcsvlist{\do}{a,b,c}%
+    \forcsvlist{\empty\do}{a,b,c}%
     \NEWLINE
-    \forcsvlist{\do}{a,{b,c}}%
+    \forcsvlist{\empty\do}{a,{b,c}}%
     \NEWLINE
-    \forcsvlist{\do}{a, {b,c}}%
+    \forcsvlist{\empty\do}{a, {b,c}}%
     \NEWLINE
-    \forcsvlist{\do}{a,{b}, {c}}%
+    \forcsvlist{\empty\do}{a,{b}, {c}}%
     \NEWLINE
-    \forcsvlist{\do}{a,{b},,{c},}%
+    \forcsvlist{\empty\do}{a,{b},,{c},}%
   }
 
 \OMIT

@@ -1545,8 +1545,8 @@
   \expandafter\ifblank\expandafter{\@gobble#2}
     {}
     {\expandafter\etb@listitem@i
-     \expandafter{\@gobble#2}{#1}}}
-\long\def\etb@listitem@i#1#2{\expandafter#2\expandafter{\@firstofone#1}}
+     \expandafter{\@secondoftwo#2}{#1}}}
+\long\def\etb@listitem@i#1#2{#2{#1}}
 
 \newcommand*{\listbreak}{}
 \long\def\listbreak#1&{}
