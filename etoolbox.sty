@@ -1502,9 +1502,9 @@
     \long\def\noexpand#1####1{%
       \expandafter\noexpand
       \csname etb@lst@\expandafter\@gobble\string#1\endcsname
-      \noexpand\@nil####1\unexpanded{#2}\noexpand\etb@lst@q@end\unexpanded{#2}&}%
+      \noexpand\@nil####1\noexpand#2\noexpand\etb@lst@q@end\noexpand#2&}%
     \long\csdef{etb@lst@\expandafter\@gobble\string#1}%
-      ####1\unexpanded{#2}{%
+      ####1\noexpand#2{%
       \noexpand\expandafter\noexpand\ifx\noexpand\expandafter
       \noexpand\etb@lst@q@end\noexpand\@gobble####1\noexpand\@empty
         \noexpand\expandafter\noexpand\@firstoftwo
@@ -1526,8 +1526,8 @@
     \long\def\noexpand#1####1####2{%
       \expandafter\noexpand
       \csname etb@lst@\expandafter\@gobble\string#1\endcsname
-      {####1}\noexpand\@nil####2\unexpanded{#2}\noexpand\etb@lst@q@end\unexpanded{#2}&}%
-    \long\csdef{etb@lst@\expandafter\@gobble\string#1}####1####2\unexpanded{#2}{%
+      {####1}\noexpand\@nil####2\noexpand#2\noexpand\etb@lst@q@end\noexpand#2&}%
+    \long\csdef{etb@lst@\expandafter\@gobble\string#1}####1####2\noexpand#2{%
       \noexpand\expandafter\noexpand\ifx\noexpand\expandafter
       \noexpand\etb@lst@q@end\noexpand\@gobble####2\noexpand\@empty
         \noexpand\expandafter\noexpand\@firstoftwo
