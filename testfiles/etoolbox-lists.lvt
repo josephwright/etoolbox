@@ -46,4 +46,11 @@
     \forlistloop{\do}{\testlist}%
   }
 
+\OMIT
+  \DeclareListParser\foo{}
+\TIMO
+\TESTEXP{Empty list marker}
+  {\foo{;.{.} {;} }}
+   
+
 \END

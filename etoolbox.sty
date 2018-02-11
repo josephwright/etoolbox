@@ -1497,6 +1497,11 @@
   \@ifdefinable#2{#1{#2}{#3}}}
 
 \def\etb@defparser@do#1#2{%
+  \ifblank{#2}{\long\def#1##1{%
+    \etb@lst@@notoken@do##1\etb@lst@q@end&}}
+    {\etb@defparser@do@aux{#1}{#2}}}
+
+\def\etb@defparser@do@aux#1#2{%
   \begingroup
   \edef\@tempa{\endgroup
     \long\def\noexpand#1####1{%
@@ -1518,9 +1523,24 @@
 	 \noexpand\@nil}}}%
   \@tempa}
 
+\long\def\etb@lst@@notoken@do#1{%
+  \ifx\etb@lst@q@end#1\@empty
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+    {\listbreak}
+    {\do{#1}%
+    \etb@lst@@notoken@do}}
+
 \def\etb@lst@q@end{\etb@lst@q@end}
 
 \def\etb@defparser@arg#1#2{%
+  \ifblank{#2}{\long\def#1##1##2{%
+    \etb@lst@@notoken@arg{##1}##2\etb@lst@q@end&}}
+    {\etb@defparser@arg@aux{#1}{#2}}}
+
+\def\etb@defparser@arg@aux#1#2{%
   \begingroup
   \edef\@tempa{\endgroup
     \long\def\noexpand#1####1####2{%
@@ -1540,6 +1560,16 @@
          \csname etb@lst@\expandafter\@gobble\string#1\endcsname
 	        {####1}\noexpand\@nil}}}%
   \@tempa}
+
+\long\def\etb@lst@@notoken@arg#1#2{%
+  \ifx\etb@lst@q@end#2\@empty
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+    {\listbreak}
+    {#1{#2}%
+    \etb@lst@@notoken@arg{#1}}}
 
 \long\def\etb@listitem#1#2{%
   \expandafter\ifblank\expandafter{\@gobble#2}
