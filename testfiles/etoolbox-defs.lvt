@@ -1,0 +1,54 @@
+\input regression-test
+\RequirePackage{etoolbox}
+
+\START
+
+\OMIT
+  \def\testa{}
+  \def\testb{ }
+  \def\testc#1{}
+  \def\testd#1{ }
+  \def\teste{a}
+  \def\testf#1{a}
+  \let\testg\relax
+\TIMO
+
+\TESTEXP{\ifdefempty}
+  {%
+    \ifdefempty{\testa}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefempty{\testb}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefempty{\testc}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefempty{\testd}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefempty{\teste}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefempty{\testf}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefempty{\testg}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefempty{\testh}{\TRUE}{\FALSE}%
+  }
+
+\TESTEXP{\ifdefvoid}
+  {%
+    \ifdefvoid{\testa}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefvoid{\testb}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefvoid{\testc}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefvoid{\testd}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefvoid{\teste}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefvoid{\testf}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefvoid{\testg}{\TRUE}{\FALSE}%
+    \NEWLINE
+    \ifdefvoid{\testh}{\TRUE}{\FALSE}%
+  }
+
+\END
