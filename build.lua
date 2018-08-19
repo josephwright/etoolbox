@@ -24,21 +24,22 @@ packtdszip  = true
 checkengines = {"pdftex"}
 
 -- Detail how to set the version automatically
-versionfiles = {"*.def", "*.sty", "*.tex"}
-function setversion_update_line(line, date, release)
-  local date = string.gsub(date, "%-", "/")
-  -- Code
-  if string.match(line,  "^  %[%d%d%d%d/%d%d/%d%d") then
-    line = string.gsub(line, "%d%d%d%d/%d%d/%d%d [^ ]*", date ..  " " .. release)
+tagfiles = {"*.def", "*.sty", "*.tex"}
+function update_tag(file,content,tagname,tagdate)
+  local tagdate = string.gsub(tagdate,"%-","/")
+  if string.match(file,"%.sty") or string.match(file,"%.def") then
+    return string.gsub(content,
+      "\n  %[%d%d%d%d/%d%d/%d%d v%d%.%d%w?",
+      "\n  [" .. tagdate .. " v" .. tagname)
+  elseif string.match(file,"%.tex") then
+    content = string.gsub(content,
+      "\n  date=%{%d%d%d%d/%d%d/%d%d%}",
+      "\n  date={" .. tagdate .. "}")
+    return string.gsub(content,
+      "\n  revision=%{%d%.%d%w?%}",
+      "\n  revision={" .. tagname .. "}")
   end
-  -- Docs
-  if string.match(line,  "^  date=") then
-    line = string.gsub(line, "{[^}]*}", "{" .. date .."}")
-  end
-  if string.match(line,  "^  revision=") then
-    line = string.gsub(line, "{[^}]*}", "{" .. release .."}")
-  end
-  return line
+  return content
 end
 
 -- Find and run the build system
