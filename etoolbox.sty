@@ -1751,20 +1751,41 @@
 \newrobustcmd{\AtBeginEnvironment}[1]{%
   \csgappto{@begin@#1@hook}}
 
-\patchcmd\begin
-  {\csname #1\endcsname}
-  {\csuse{@begin@#1@hook}%
-   \csname #1\endcsname}
-  {}
-  {\etb@warning{%
-     Patching '\string\begin' failed!\MessageBreak
-     '\string\AtBeginEnvironment' will not work\@gobble}}
+\ifcsname begin \endcsname
+  \expandafter\patchcmd\csname begin \endcsname
+    {\csname #1\endcsname}
+    {\csuse{@begin@#1@hook}%
+     \csname #1\endcsname}
+    {}
+    {\etb@warning{%
+       Patching '\string\begin' failed!\MessageBreak
+       '\string\AtBeginEnvironment' will not work\@gobble}}
+\else
+  \patchcmd\begin
+    {\csname #1\endcsname}
+    {\csuse{@begin@#1@hook}%
+     \csname #1\endcsname}
+    {}
+    {\etb@warning{%
+       Patching '\string\begin' failed!\MessageBreak
+       '\string\AtBeginEnvironment' will not work\@gobble}}
+\fi
 
 % {<environment>}{<code>}
 
 \newrobustcmd{\AtEndEnvironment}[1]{%
   \csgappto{@end@#1@hook}}
 
+\ifcsname end \endcsname
+\expandafter\patchcmd\csname end \endcsname
+  {\csname end#1\endcsname}
+  {\csuse{@end@#1@hook}%
+   \csname end#1\endcsname}
+  {}
+  {\etb@warning{%
+     Patching '\string\end' failed!\MessageBreak
+     '\string\AtEndEnvironment' will not work\@gobble}}
+\else
 \patchcmd\end
   {\csname end#1\endcsname}
   {\csuse{@end@#1@hook}%
@@ -1773,31 +1794,54 @@
   {\etb@warning{%
      Patching '\string\end' failed!\MessageBreak
      '\string\AtEndEnvironment' will not work\@gobble}}
+\fi
 
 % {<environment>}{<code>}
 
 \newrobustcmd{\BeforeBeginEnvironment}[1]{%
   \csgappto{@beforebegin@#1@hook}}
 
-\pretocmd\begin
-  {\csuse{@beforebegin@#1@hook}}
-  {}
-  {\etb@warning{%
-     Patching '\string\begin' failed!\MessageBreak
-     '\string\BeforeBeginEnvironment' will not work\@gobble}}
+\ifcsname begin \endcsname
+  \expandafter\pretocmd\csname begin \endcsname
+    {\csuse{@beforebegin@#1@hook}}
+    {}
+    {\etb@warning{%
+       Patching '\string\begin' failed!\MessageBreak
+       '\string\BeforeBeginEnvironment' will not work\@gobble}}
+\else
+  \pretocmd\begin
+    {\csuse{@beforebegin@#1@hook}}
+    {}
+    {\etb@warning{%
+       Patching '\string\begin' failed!\MessageBreak
+       '\string\BeforeBeginEnvironment' will not work\@gobble}}
+\fi
 
 % {<environment>}{<code>}
 
 \newrobustcmd{\AfterEndEnvironment}[1]{%
   \csgappto{@afterend@#1@hook}}
 
-\patchcmd\end
-  {\if@ignore}
-  {\csuse{@afterend@#1@hook}%
-   \if@ignore}
-  {}
-  {\etb@warning{%
-     Patching '\string\end' failed!\MessageBreak
-     '\string\AfterEndEnvironment' will not work\@gobble}}
+\let\if@ignore\relax
+\ifcsname end \endcsname
+  \expandafter\patchcmd\csname end \endcsname
+    {\if@ignore}
+    {\csuse{@afterend@#1@hook}%
+     \if@ignore}
+    {}
+    {\etb@warning{%
+       Patching '\string\end' failed!\MessageBreak
+       '\string\AfterEndEnvironment' will not work\@gobble}}
+\else
+  \patchcmd\end
+    {\if@ignore}
+    {\csuse{@afterend@#1@hook}%
+     \if@ignore}
+    {}
+    {\etb@warning{%
+       Patching '\string\end' failed!\MessageBreak
+       '\string\AfterEndEnvironment' will not work\@gobble}}
+\fi
+\let\if@ignore\iffalse
 
 \endinput
