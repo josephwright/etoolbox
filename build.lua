@@ -36,8 +36,8 @@ function update_tag(file,content,tagname,tagdate)
       "\n  date=%{%d%d%d%d/%d%d/%d%d%}",
       "\n  date={" .. tagdate .. "}")
     return string.gsub(content,
-      "\n  revision=%{%d%.%d%w?%}",
-      "\n  revision={" .. tagname .. "}")
+      "\n  revision=%{v%d%.%d%w?%}",
+      "\n  revision={v" .. tagname .. "}")
   end
   return content
 end
