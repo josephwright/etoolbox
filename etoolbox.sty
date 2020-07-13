@@ -1,5 +1,5 @@
 % Copyright (c) 2007-2011 Philipp Lehman.
-%           (c) 2015-2019 Joseph Wright
+%           (c) 2015-2020 Joseph Wright
 %
 % Permission is granted to copy, distribute and/or modify this
 % software under the terms of the LaTeX Project Public License
@@ -1696,6 +1696,16 @@
 % {<listcsname>} => \do{<item1>}\do{<item2>}...
 
 \newcommand*{\dolistcsloop}{\forlistcsloop\do}
+
+\ifdef\AddToHook
+  {%
+    \newrobustcmd*{\AtEndPreamble}{\AddToHook{env/document/begin}}%
+    \let\AfterPreamble\AtBeginDocument
+    \newrobustcmd*{\AfterEndPreamble}{\AddToHook{begindocument/end}}%
+    \newrobustcmd*{\AfterEndDocument}{\AddToHook{enddocument/end}}%
+    \endinput
+  }
+  {}
 
 % {<code>}
 
