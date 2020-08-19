@@ -878,6 +878,45 @@
      \csname#2\endcsname}
     {\csundef{#1}}}
 
+\ifdef\NewCommandCopy
+  {%
+    \def\etb@carsquare#1#2#3\@nil{#1#2}
+    %
+    % {<cstoken>}{<true>}{<false>}
+    %
+    \newrobustcmd*{\etb@if@robustcmd}[1]{%
+      \begingroup
+        \escapechar=`\\
+        \edef\etb@tempa{%
+      \endgroup
+      \def\noexpand\etb@tempa{\noexpand\@testopt
+        \expandafter\noexpand\csname\string#1\endcsname}%
+      \def\noexpand\etb@tempb{\unexpanded\expandafter\expandafter\expandafter
+        {\expandafter\etb@carsquare#1{}{}\@nil}}%
+      }\etb@tempa
+      \ifx\etb@tempa\etb@tempb
+        \expandafter\@firstoftwo
+      \else
+        \expandafter\@secondoftwo
+      \fi}
+    %
+    % {<cstoken>}{<cstoken>}
+    %
+    \newrobustcmd*{\etb@copy@robustcmd}[2]{%
+      \begingroup
+        \escapechar=`\\
+        \edef\etb@tempa{%
+      \endgroup
+      \protected\def\noexpand#1{\noexpand\@testopt
+        \expandafter\noexpand\csname\string#1\endcsname
+        \unexpanded\expandafter\expandafter\expandafter
+          {\expandafter\@gobbletwo#2}}%
+      \let\expandafter\noexpand\csname\string#1\endcsname
+          \expandafter\noexpand\csname\string#2\endcsname
+      }\etb@tempa}
+    \g@addto@macro\@declarecommandcopylisthook
+      {{\etb@if@robustcmd\etb@copy@robustcmd}}
+  }{}
 % {<csname>}
 
 \newcommand*{\csuse}[1]{%
