@@ -1,5 +1,5 @@
 \ProvidesFile{etoolbox.def}
-  [2020/07/15 v2.5i etoolbox debug messages (JAW)]
+  [2020/08/24 v2.5j etoolbox debug messages (JAW)]
 
 \begingroup
 \makeatletter
