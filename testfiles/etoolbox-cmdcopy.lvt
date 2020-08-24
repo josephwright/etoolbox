@@ -1,0 +1,36 @@
+\input regression-test
+\RequirePackage{etoolbox}
+
+\START
+
+\ifdef\DeclareCommandCopy{}{\END}
+
+\def\testt#1#2#3#4{%
+  #4%
+  \DeclareCommandCopy#1#3%
+  \testtt#1
+  \expandafter\testtt\csname\string#1\endcsname
+  \typeout{}}
+\def\testtt#1{%
+  \typeout{\string#1=\meaning#1|}%
+  \let#1\undefined}
+
+\def\cmdd{defined}
+
+% Here we need control words
+\testt\tmp{tmp}\cmdd
+{\renewrobustcmd\cmdd[1][zzz]{boo}}
+
+% And here control symbols
+\testt\+{+}\%
+{\renewrobustcmd\%[1][zzz]{boo}}
+
+% Test letting a control symbol to a control word
+\testt\tmp{tmp}\%
+{\renewrobustcmd\%[1][zzz]{boo}}
+
+% And a control word to a control symbol
+\testt\+{+}\cmdd
+{\renewrobustcmd\cmdd[1][zzz]{boo}}
+
+\END
