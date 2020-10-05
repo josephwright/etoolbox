@@ -1736,7 +1736,8 @@
 
 \newcommand*{\dolistcsloop}{\forlistcsloop\do}
 
-\ifdef\AddToHook
+\providecommand\IfFormatAtLeastTF{\@ifl@t@r\fmtversion}
+\IfFormatAtLeastTF{2020-10-01}
   {%
     \newrobustcmd*{\AtEndPreamble}{\AddToHook{begindocument/before}}%
     \let\AfterPreamble\AtBeginDocument
