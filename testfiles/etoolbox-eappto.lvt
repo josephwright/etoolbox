@@ -18,9 +18,9 @@
     \TYPE{\mmeaning\test}
     \eappto\test{\inputb\inputc}
     \TYPE{\mmeaning\test}
-    \eappto\test{(\unexpanded{\inputd}= \inputd)}
+    \eappto\test{(\noexpand\inputd = \inputd)}
     \TYPE{\mmeaning\test}
-    \eappto\test{(\expandonce{\inputee}= \inputee)}
+    \eappto\test{(\expandonce\inputee = \inputee)}
     \TYPE{\mmeaning\test}
     \eappto\test{\the\toks0}
     \TYPE{\mmeaning\test}
@@ -33,9 +33,9 @@
     \TYPE{\mmeaning\test}
     \epreto\test{\inputb\inputc}
     \TYPE{\mmeaning\test}
-    \epreto\test{(\unexpanded{\inputd}= \inputd)}
+    \epreto\test{(\noexpand\inputd = \inputd)}
     \TYPE{\mmeaning\test}
-    \epreto\test{(\expandonce{\inputee}= \inputee)}
+    \epreto\test{(\expandonce\inputee = \inputee)}
     \TYPE{\mmeaning\test}
     \epreto\test{\the\toks0}
     \TYPE{\mmeaning\test}
