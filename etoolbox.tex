@@ -71,7 +71,7 @@ The syntax and behavior of this command is similar to \cmd{providecommand} excep
 
 \cmditem{robustify}{command}
 
-Redefines a \prm{command} defined with \cmd{newcommand} such that it is robust, without altering its parameters, its prefixes, or its replacement text. If the \prm{command} has been defined with \cmd{DeclareRobustCommand}, this will be detected automatically and \latex's high-level protection mechanism will be replaced by the corresponding low-level \etex feature.
+Redefines a \prm{command} defined with \cmd{newcommand} such that it is robust, without altering its parameters, its prefixes, or its replacement text. If the \prm{command} has been defined with \cmd{DeclareRobustCommand}, this will be detected automatically and \latex's high-level protection mechanism will be replaced by the corresponding low-level \etex feature. If the command has been copied using \cmd{let} \emph{before} robustifing, it is possible an error will arise if the copy is used: in this case, a fresh copy should be created, ideally using the \latex kernel command \cmd{DeclareCommandCopy}.
 
 \end{ltxsyntax}
 
