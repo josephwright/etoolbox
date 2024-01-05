@@ -1,0 +1,29 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: \eappto regression test
+============================================================
+\test = {undefined}
+\test = {macro:->a}
+\test = {macro:->abc}
+\test = {macro:->abc(\inputd = d)}
+\test = {macro:->abc(\inputd = d)(\inpute = e)}
+\test = {macro:->abc(\inputd = d)(\inpute = e)\unexpandingmacro }
+============================================================
+============================================================
+TEST 2: \epreto regression test
+============================================================
+\test = {undefined}
+\test = {macro:->a}
+\test = {macro:->bca}
+\test = {macro:->(\inputd = d)bca}
+\test = {macro:->(\inpute = e)(\inputd = d)bca}
+\test = {macro:->\unexpandingmacro (\inpute = e)(\inputd = d)bca}
+============================================================
+============================================================
+TEST 3: \eappto & \epreto with hash symbols
+============================================================
+\lazyedef = {macro:-> only two hash symbols (##) needed to escape instead of four}
+\lazydef = {macro:#1#2->do something with #1 and #2}
+\lazydef{arg1}{arg2} = do something with arg1 and arg2
+============================================================

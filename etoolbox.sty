@@ -942,16 +942,16 @@
     {\edef#1{\expandonce#1\unexpanded{#2}}}}
 \newrobustcmd{\eappto}[2]{%
   \ifundef{#1}
-    {\edef#1{#2}}
-    {\edef#1{\expandonce#1#2}}}
+    {\edef#1{\expandonce{\expanded{#2}}}}
+    {\edef#1{\expandonce#1\expandonce{\expanded{#2}}}}}
 \newrobustcmd{\gappto}[2]{%
   \ifundef{#1}
     {\xdef#1{\unexpanded{#2}}}
     {\xdef#1{\expandonce#1\unexpanded{#2}}}}
 \newrobustcmd{\xappto}[2]{%
   \ifundef{#1}
-    {\xdef#1{#2}}
-    {\xdef#1{\expandonce#1#2}}}
+    {\xdef#1{\expandonce{\expanded{#2}}}}
+    {\xdef#1{\expandonce#1\expandonce{\expanded{#2}}}}}
 
 \newrobustcmd*{\protected@eappto}{\etb@protected\eappto}
 \newrobustcmd*{\protected@xappto}{\etb@protected\xappto}
@@ -964,16 +964,16 @@
     {\edef#1{\unexpanded{#2}\expandonce#1}}}
 \newrobustcmd{\epreto}[2]{%
   \ifundef{#1}
-    {\edef#1{#2}}
-    {\edef#1{#2\expandonce#1}}}
+    {\edef#1{\expandonce{\expanded{#2}}}}
+    {\edef#1{\expandonce{\expanded{#2}}\expandonce#1}}}
 \newrobustcmd{\gpreto}[2]{%
   \ifundef{#1}
     {\xdef#1{\unexpanded{#2}}}
     {\xdef#1{\unexpanded{#2}\expandonce#1}}}
 \newrobustcmd{\xpreto}[2]{%
   \ifundef{#1}
-    {\xdef#1{#2}}
-    {\xdef#1{#2\expandonce#1}}}
+    {\xdef#1{\expandonce{\expanded{#2}}}}
+    {\xdef#1{\expandonce{\expanded{#2}}\expandonce#1}}}
 
 \newrobustcmd*{\protected@epreto}{\etb@protected\epreto}
 \newrobustcmd*{\protected@xpreto}{\etb@protected\xpreto}
