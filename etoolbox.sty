@@ -62,7 +62,8 @@
 \def\etb@newcommand#1[#2]{%
   \@ifnextchar[%]
     {\etb@xargdef#1[#2]}
-    {\ifx\l@ngrel@x\relax
+    {\let\pr@t@ct@d\protected
+     \ifx\l@ngrel@x\relax
        \let\l@ngrel@x\protected
      \else
        \protected\def\l@ngrel@x{\protected\long}%
