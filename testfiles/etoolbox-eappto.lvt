@@ -1,0 +1,64 @@
+\input{regression-test}
+\RequirePackage{etoolbox}
+
+\START
+
+\def\mmeaning#1{\string#1\space= {\meaning#1}}
+\def\inputa{a}
+\def\inputb{b}
+\def\inputc{c}
+\def\inputd{d}
+\def\inpute{e}
+\def\inputee{\inpute}
+\toks0={\unexpandingmacro}
+
+\TEST{\eappto regression test}{
+    \TYPE{\mmeaning\test}
+    \eappto\test{\inputa}
+    \TYPE{\mmeaning\test}
+    \eappto\test{\inputb\inputc}
+    \TYPE{\mmeaning\test}
+    \eappto\test{(\noexpand\inputd = \inputd)}
+    \TYPE{\mmeaning\test}
+    \eappto\test{(\expandonce\inputee = \inputee)}
+    \TYPE{\mmeaning\test}
+    \eappto\test{\the\toks0}
+    \TYPE{\mmeaning\test}
+}
+
+\TEST{\epreto regression test}{
+    \let\test\undefined
+    \TYPE{\mmeaning\test}
+    \epreto\test{\inputa}
+    \TYPE{\mmeaning\test}
+    \epreto\test{\inputb\inputc}
+    \TYPE{\mmeaning\test}
+    \epreto\test{(\noexpand\inputd = \inputd)}
+    \TYPE{\mmeaning\test}
+    \epreto\test{(\expandonce\inputee = \inputee)}
+    \TYPE{\mmeaning\test}
+    \epreto\test{\the\toks0}
+    \TYPE{\mmeaning\test}
+}
+
+\TEST{\eappto & \epreto with hash symbols}{
+    \def\two{four}
+    \def\four{eight}
+    \let\test\undefined
+    \eappto\test{
+        \unexpanded{\edef\lazyedef}{
+            only \unexpanded{\two} hash symbols (##) needed to escape
+            instead of \unexpanded{\four}}
+    }
+    \epreto\test{
+        \unexpanded{\def\lazydef#1#2}{do something with #1 and #2}
+    }
+    \def\two{two}
+    \def\four{four}
+    \test
+    \TYPE{\mmeaning\lazyedef}
+    \TYPE{\mmeaning\lazydef}
+    \TYPE{\string\lazydef{arg1}{arg2} = \lazydef{arg1}{arg2}}
+}
+
+\END
